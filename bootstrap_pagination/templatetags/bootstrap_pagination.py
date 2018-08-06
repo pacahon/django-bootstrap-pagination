@@ -125,11 +125,11 @@ class BootstrapPagerNode(Node):
 
         previous_page_url = None
         if page.has_previous():
-            previous_page_url = get_page_url(page.previous_page_number(), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
+            previous_page_url = get_page_url(str(page.previous_page_number()), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
 
         next_page_url = None
         if page.has_next():
-            next_page_url = get_page_url(page.next_page_number(), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
+            next_page_url = get_page_url(str(page.next_page_number()), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
 
         return get_template("bootstrap_pagination/pager.html").render(
             Context({
@@ -229,24 +229,24 @@ class BootstrapPaginationNode(Node):
             else:
                 index_range = "%s-%s" % (1 + (curpage - 1) * page.paginator.per_page, curpage * page.paginator.per_page, )
                 
-            url = get_page_url(curpage, get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
+            url = get_page_url(str(curpage), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
             page_urls.append((curpage, index_range, url))
 
         first_page_url = None
         if current_page >= 1:
-            first_page_url = get_page_url(1, get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
+            first_page_url = get_page_url(str(1), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
 
         last_page_url = None
         if current_page <= page_count:
-            last_page_url = get_page_url(page_count, get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
+            last_page_url = get_page_url(str(page_count), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
 
         previous_page_url = None
         if page.has_previous():
-            previous_page_url = get_page_url(page.previous_page_number(), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
+            previous_page_url = get_page_url(str(page.previous_page_number()), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
 
         next_page_url = None
         if page.has_next():
-            next_page_url = get_page_url(page.next_page_number(), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
+            next_page_url = get_page_url(str(page.next_page_number()), get_current_app(context), url_view_name, url_extra_args, url_extra_kwargs, url_param_name, url_get_params, url_anchor)
 
         return get_template("bootstrap_pagination/pagination.html").render(
             Context({
