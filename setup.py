@@ -8,7 +8,7 @@ with open('README.rst', 'rb') as readme:
 
 setup(
     name='django-bootstrap-pagination',
-    version='1.6.4',
+    version='1.6.5',
     keywords="django bootstrap pagination templatetag",
     author=u'Jason McClellan',
     author_email='jason@jasonmccllelan.net',
